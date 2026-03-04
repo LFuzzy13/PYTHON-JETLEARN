@@ -120,7 +120,7 @@ def get_text_pc(i,j,gb,l1,l2):
             l2.config(state=ACTIVE)
             board[i][j] = "X"
         else:
-            btn1[i][j].config(satet=ACTIVE)
+            btn1[i][j].config(state=ACTIVE)
             l2.config(state=DISABLED)
             l1.config(state=ACTIVE)
             board[i][j] = "O"
@@ -141,7 +141,7 @@ def get_text_pc(i,j,gb,l1,l2):
          box=messagebox.showinfo("Winner","Computer Won The Match")
 
     elif isfull():
-        gb.destroy
+        gb.destroy()
         x=False
         box=messagebox.showinfo("Tie Game", "The Game Was A Tie")
     
@@ -161,7 +161,7 @@ def gameboard_pc(game_board,l1,l2):
         btn1[i] = []
         for j in range(3):
             n= j
-            btn1[i].append[j]
+            btn1[i].append(j)
             get_t = partial(get_text_pc,i,j,game_board,l1,l2)
             btn1[i][j]=Button(game_board,bd=5,command=get_t,height=4,width=8)
             btn1[i][j].grid(row=m,column=n)
