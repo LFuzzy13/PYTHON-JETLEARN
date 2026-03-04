@@ -101,4 +101,144 @@ def PC():
     if len (corner)>0:
         move = random.randint(0,len(corner)-1) 
         return corner[move]
-    #INCOMPLETE
+    
+    edge = []
+    for i in possiblemove:
+        if i in [[0,1], [1,0], [1,2], [2,1]]:
+            edge.append(i)
+
+    if len(edge) > 0 :
+           move = random.randint(0,len(edge) - 1)
+           return edge[move]
+    
+def get_text_pc(i,j,gb,l1,l2):
+    global Sign
+
+    if board[i][j] == " ":
+        if Sign%2 == 0:
+            l1.config(state=DISABLED)
+            l2.config(state=ACTIVE)
+            board[i][j] = "X"
+        else:
+            btn1[i][j].config(satet=ACTIVE)
+            l2.config(state=DISABLED)
+            l1.config(state=ACTIVE)
+            board[i][j] = "O"
+
+        Sign +=1
+        btn1[i][j].config(text=board[i][j])
+
+    x = True
+
+    if winner(board,"X"):
+        gb.destroy()
+        x=False
+        box=messagebox.showinfo("Winner","Player Won The Match")
+
+    elif winner(board, "O"):
+         gb.destroy()
+         x=False
+         box=messagebox.showinfo("Winner","Computer Won The Match")
+
+    elif isfull():
+        gb.destroy
+        x=False
+        box=messagebox.showinfo("Tie Game", "The Game Was A Tie")
+    
+    if x:
+        if Sign % 2 !=0:
+            move = PC()
+            btn1[move[0]][move[1]].config(state=DISABLED)
+            get_text_pc(move[0],move[1],gb,l1,l2)
+
+def gameboard_pc(game_board,l1,l2):
+    global btn1
+    btn1=[]
+
+    for i in range(3):
+        m = 3+i 
+        btn1.append(i)
+        btn1[i] = []
+        for j in range(3):
+            n= j
+            btn1[i].append[j]
+            get_t = partial(get_text_pc,i,j,game_board,l1,l2)
+            btn1[i][j]=Button(game_board,bd=5,command=get_t,height=4,width=8)
+            btn1[i][j].grid(row=m,column=n)
+    game_board.mainloop()
+
+def withpc(game_board):
+    game_board.destroy()
+    game_board = Tk()
+    game_board.title("Noughts & Crosses")
+    
+    l1=Button(game_board,text = "Player : X", width=10)
+    l1.grid(row = 1,column = 1)
+
+    l2=Button(game_board,text = "Player : O", width=10, state=DISABLED)
+    l2.grid(row = 2,column = 1)
+
+    gameboard_pc(game_board,l1,l2)
+
+def withplayer(game_board):
+    game_board.destroy()
+    game_board = Tk()
+    game_board.title("Noughts & Crosses")
+      
+    l1=Button(game_board,text = "Player 1 : X", width=10)
+    l1.grid(row = 1,column = 1)
+
+    l2=Button(game_board,text = "Player 2 : O", width=10, state=DISABLED)
+    l2.grid(row = 2,column = 1)
+
+    gameboard_pl(game_board,l1,l2)
+
+def play():
+    menu = Tk()
+    menu.geometry("250x250")
+    menu.title("Noughts & Crosses")
+
+    wpc=partial(withpc,menu)
+    wpl=partial(withplayer,menu)
+    head = Button(
+        menu,
+        text="-----Welcome to Noughts & Crosses-----",
+        activeforeground='red',
+        activebackground="yellow",
+        bg="red",
+        fg="yellow",
+        width=500,
+        font="summer",
+        bd = 5
+    )
+    
+    b1=Button(
+        menu,text="Singleplayer",command=wpc,
+        activeforeground="red", activebackground="yellow",
+        bg="red",fg="yellow", width=500,
+        font="summer", bd=5
+    )
+
+    b2=Button(
+        menu,text="Multiplayer",command=wpl,
+        activeforeground="red", activebackground="yellow",
+        bg="red",fg="yellow", width=500,
+        font="summer", bd=5
+    )
+
+    b3=Button(
+        menu,text="Exit",command=menu.quit,
+        activeforeground="red", activebackground="yellow",
+        bg="red",fg="yellow", width=500,
+        font="summer", bd=5
+    )
+
+    head.pack(side="top")
+    b1.pack(side="top")
+    b2.pack(side="top")
+    b3.pack(side="top")
+
+    menu.mainloop()
+
+if __name__ == "__main__":
+    play()
