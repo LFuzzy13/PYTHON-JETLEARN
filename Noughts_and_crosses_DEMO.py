@@ -185,34 +185,34 @@ def B9click():
 
 #BUTTONS
 
-B1=Button(W,text="",width=5,command=B1click)
+B1=Button(W,text="",width=5,command=B1click, bg="#6c2989")
 B1.grid(row=0, column=0,padx=5, pady=5)
 
-B2=Button(W,text="",width=5,command=B2click)
+B2=Button(W,text="",width=5,command=B2click, bg="#6c2989")
 B2.grid(row=0, column=1,padx=5, pady=5)
 
-B3=Button(W,text="",width=5,command=B3click)
+B3=Button(W,text="",width=5,command=B3click, bg="#6c2989")
 B3.grid(row=0, column=2,padx=5, pady=5)
 
-B4=Button(W,text="",width=5,command=B4click)
+B4=Button(W,text="",width=5,command=B4click, bg="#6c2989")
 B4.grid(row=1, column=0,padx=5, pady=5)
 
-B5=Button(W,text="",width=5,command=B5click)
+B5=Button(W,text="",width=5,command=B5click, bg="#6c2989")
 B5.grid(row=1, column=1,padx=5, pady=5)
 
-B6=Button(W,text="",width=5,command=B6click)
+B6=Button(W,text="",width=5,command=B6click, bg="#6c2989")
 B6.grid(row=1, column=2,padx=5, pady=5)
 
-B7=Button(W,text="",width=5,command=B7click)
+B7=Button(W,text="",width=5,command=B7click, bg="#6c2989")
 B7.grid(row=2, column=0,padx=5, pady=5)
 
-B8=Button(W,text="",width=5,command=B8click)
+B8=Button(W,text="",width=5,command=B8click, bg="#6c2989")
 B8.grid(row=2, column=1,padx=5, pady=5)
 
-B9=Button(W,text="",width=5,command=B9click)
+B9=Button(W,text="",width=5,command=B9click, bg="#6c2989")
 B9.grid(row=2, column=2,padx=5, pady=5)
 
-label=Label(W,text="Player" +str(Turn) +"Turn")
+label=Label(W,text="Player" +str(Turn) +"Turn", bg="#dfb65d")
 label.grid(row=3,column=1,padx=10,pady=10)
 
 W.mainloop()
